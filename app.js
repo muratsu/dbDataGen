@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+  _ = require('underscore'),
 	Schema = mongoose.Schema,
 	fs = require('fs');
 
@@ -9,17 +10,12 @@ var dbSchema = new Schema({
 	itemDate		: { type: Date, default: Date.now }
 });
 
+var eol = "\r\n";
 function dbPopulator(fileName) {
 	//this.fileName = fileName;
-
 	try {
-		var i = 0;
-  		var data = fs.readFileSync(fileName, 'ascii');
-
-  		// while(data[i] !== ] ) {
-  		// }
-
-  		this.data = data;
+		var data = fs.readFileSync(fileName, 'ascii');
+		this.data = data.split(eol).reverse();
 	}
 	catch (err) {
   		console.error("There was an error opening the file:");

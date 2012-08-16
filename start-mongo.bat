@@ -1,0 +1,1 @@
+CALL mongod.exe --dbpath C:\MongoDB\dbGen
